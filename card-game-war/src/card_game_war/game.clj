@@ -18,22 +18,15 @@
 
 (defn first-card-better? [card1 card2]
   "true if card1 is better than card2, otherwise false."
-  (let [suit1 (first card1)
-        suit1-index (suit-index suit1)
-        rank1 (second card1)
-        rank1-index (rank-index rank1)
-        suit2 (first card2)
-        suit2-index (suit-index suit2)
-        rank2 (second card2)
-        rank2-index (rank-index rank2)]
-    (or (> rank1-index rank2-index)
-        (and (= rank1-index rank2-index)
-             (> suit1-index suit2-index)))
+  (let [suit1-index (suit-index (first card1))
+        rank1-index (rank-index (second card1))
+        suit2-index (suit-index (first card2))
+        rank2-index (rank-index (second card2))]
+    (if (= rank1-index rank2-index)
+      (> suit1-index suit2-index)
+      (> rank1-index rank2-index))
     )
 )
-
-
-
 
 (defn play-round [player1-card player2-card]
   "Determine the winner of a round with the two played cards."

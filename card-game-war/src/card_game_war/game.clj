@@ -8,20 +8,12 @@
         rank ranks]
     [suit rank]))
 
-(defn rank-index [rank]
-  (.indexOf ranks rank)
-)
-
-(defn suit-index [suit]
-  (.indexOf suits suit)
-)
-
 (defn first-card-better? [card1 card2]
   "true if card1 is better than card2, otherwise false."
-  (let [suit1-index (suit-index (first card1))
-        rank1-index (rank-index (second card1))
-        suit2-index (suit-index (first card2))
-        rank2-index (rank-index (second card2))]
+  (let [suit1-index (.indexOf suits (first card1))
+        rank1-index (.indexOf ranks (second card1))
+        suit2-index (.indexOf suits (first card2))
+        rank2-index (.indexOf ranks (second card2))]
     (if (= rank1-index rank2-index)
       (> suit1-index suit2-index)
       (> rank1-index rank2-index))

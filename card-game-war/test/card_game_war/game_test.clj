@@ -14,6 +14,10 @@
 )
 
 (deftest play-game-test
+  (is (= :player1-wins (play-game [[:heart :queen]] [[:club 8]])))
+  (is (= :player2-wins (play-game [[:club 8]] [[:heart :queen]])))
+  (is (= :player1-wins (play-game [[:heart :king] [:spade :ace]] [[:club 6] [:club 10]])))
+  (is (= :player2-wins (play-game [[:club 6] [:club 10]] [[:heart :king] [:spade :ace]])))
   (is (= :player1-wins (play-game [[:heart 8] [:diamond :king] [:spade :jack]] [[:diamond 2] [:spade 4] [:club 5]])))
   (is (= :player2-wins (play-game [[:diamond 2] [:spade 4] [:club 5]] [[:heart 8] [:diamond :king] [:spade :jack]])))
 )
